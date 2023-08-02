@@ -229,6 +229,21 @@ def compare_pso_vs_genetic(
         system.update(genetic_control_signal, dt)
         genetic_positions.append(system.position)
 
+    # Mostrar los resultados de desempeño de ambos algoritmos
+    print("Resultados de PSO:")
+    print(
+        "Mejores parámetros encontrados: Kp={}, Ki={}, Kd={}".format(*pso_best_params)
+    )
+    print("Valor de fitness (MSE) asociado: {}".format(pso_best_fitness))
+
+    print("\nResultados del Algoritmo Genético:")
+    print(
+        "Mejores parámetros encontrados: Kp={}, Ki={}, Kd={}".format(
+            *genetic_best_params
+        )
+    )
+    print("Valor de fitness (MSE) asociado: {}".format(genetic_best_fitness))
+
     # Graficar la respuesta del sistema con el controlador PID ajustado por PSO
     plt.subplot(2, 1, 1)
     plt.plot(time_points, pso_positions, label="PSO Controlador PID")
@@ -266,21 +281,6 @@ def compare_pso_vs_genetic(
     plt.grid(True)
     plt.title("Comparación PSO vs. Algoritmo Genético")
     plt.show()"""
-
-    # Mostrar los resultados de desempeño de ambos algoritmos
-    print("Resultados de PSO:")
-    print(
-        "Mejores parámetros encontrados: Kp={}, Ki={}, Kd={}".format(*pso_best_params)
-    )
-    print("Valor de fitness (MSE) asociado: {}".format(pso_best_fitness))
-
-    print("\nResultados del Algoritmo Genético:")
-    print(
-        "Mejores parámetros encontrados: Kp={}, Ki={}, Kd={}".format(
-            *genetic_best_params
-        )
-    )
-    print("Valor de fitness (MSE) asociado: {}".format(genetic_best_fitness))
 
 
 if __name__ == "__main__":
