@@ -229,7 +229,34 @@ def compare_pso_vs_genetic(
         system.update(genetic_control_signal, dt)
         genetic_positions.append(system.position)
 
-    # Graficar la respuesta del sistema con ambos controladores PID ajustados
+    # Graficar la respuesta del sistema con el controlador PID ajustado por PSO
+    plt.subplot(2, 1, 1)
+    plt.plot(time_points, pso_positions, label="PSO Controlador PID")
+    plt.axhline(y=setpoint, color="r", linestyle="--", label="Setpoint")
+    plt.xlabel("Tiempo")
+    plt.ylabel("Posición")
+    plt.legend()
+    plt.grid(True)
+    plt.title("Respuesta del sistema con controlador PID ajustado por PSO")
+
+    # Graficar la respuesta del sistema con el controlador PID ajustado por el Algoritmo Genético
+    plt.subplot(2, 1, 2)
+    plt.plot(time_points, genetic_positions, label="Algoritmo Genético Controlador PID")
+    plt.axhline(y=setpoint, color="r", linestyle="--", label="Setpoint")
+    plt.xlabel("Tiempo")
+    plt.ylabel("Posición")
+    plt.legend()
+    plt.grid(True)
+    plt.title(
+        "Respuesta del sistema con controlador PID ajustado por Algoritmo Genetico"
+    )
+
+    # Ajustar el diseño de las gráficas para evitar superposiciones
+    plt.tight_layout()
+
+    plt.show()
+
+    """# Graficar la respuesta del sistema con ambos controladores PID ajustados
     plt.plot(time_points, pso_positions, label="PSO Controlador PID")
     plt.plot(time_points, genetic_positions, label="Algoritmo Genético Controlador PID")
     plt.axhline(y=setpoint, color="r", linestyle="--", label="Setpoint")
@@ -238,7 +265,7 @@ def compare_pso_vs_genetic(
     plt.legend()
     plt.grid(True)
     plt.title("Comparación PSO vs. Algoritmo Genético")
-    plt.show()
+    plt.show()"""
 
     # Mostrar los resultados de desempeño de ambos algoritmos
     print("Resultados de PSO:")
